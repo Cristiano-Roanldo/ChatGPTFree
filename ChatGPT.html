@@ -1,0 +1,269 @@
+
+    <!DOCTYPE html>
+<html>
+<head>
+	<title>Cookie Example</title>
+	<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body class="ha">
+	<div class="background"></div>
+	<h1>ChatGPDFree</h1>
+	<button onclick="setCookie()">Set Cookie</button>
+	<button onclick="getCookie()">Get Cookie</button>
+	<p id="cookie"></p>
+
+
+	<br><br>
+	<div class="input-container">
+		<input type="text" id="input" required>
+		<label for="input" class="label">Enter your name</label>
+		<div class="underline"></div>
+	</div>
+
+
+	<h1 class="h">Online Currency System</h1>
+	<p class="p">You have <span id="currency">100</span> credits.</p>
+	<button onclick="buyItem(10)" class="button">Buy Item (10 credits)</button>
+
+
+	<div class="containerx">
+		<h1 class=".\h1">Subscribe to Our Newsletter</h1>
+		<form class="formio">
+			<label for="name" class=".\label">Name:</label>
+			<input type="text" id="name" name="name" placeholder="Enter your name" required class=".\input">
+
+			<label for="email" class=".\label">Email:</label>
+			<input type="email" id="email" name="email" placeholder="Enter your email" required class=".\input">
+
+			<button type="submit" class="btn">Subscribe</button>
+		</form>
+	</div>
+
+
+
+
+	<script>
+        function setCookie() {
+	document.cookie = "username=John Doe; expires=Thu, 18 Dec 2022 12:00:00 UTC; path=/";
+}
+
+function getCookie() {
+	var name = "username=";
+	var decodedCookie = decodeURIComponent(document.cookie);
+	var ca = decodedCookie.split(';');
+	for(var i = 0; i <ca.length; i++) {
+
+		var c = ca[i];
+		while (c.charAt(0) == ' ') {
+			c = c.substring(1);
+		}
+		if (c.indexOf(name) == 0) {
+			document.getElementById("cookie").innerHTML = c.substring(name.length, c.length);
+			return;
+		}
+	}
+	document.getElementById("cookie").innerHTML = "Cookie not found";
+}
+
+// Add focus and blur event listeners to input
+var input = document.getElementById("input");
+input.addEventListener("focus", function() {
+	this.parentNode.classList.add("focus");
+});
+input.addEventListener("blur", function() {
+	if (this.value == "") {
+		this.parentNode.classList.remove("focus");
+	}
+});
+
+var currency = 100;
+
+function buyItem(price) {
+	if (currency >= price) {
+		currency -= price;
+		document.getElementById("currency").innerHTML = currency;
+		alert("Item purchased successfully!");
+	} else {
+		alert("You don't have enough credits to buy this item.");
+	}
+}
+    </script>
+
+    <style>
+        body {
+	font-family: Arial, sans-serif;
+}
+
+button {
+	padding: 10px;
+	margin: 10px;
+}
+
+p {
+	margin-top: 20px;
+}
+
+.ha {
+	margin: 0;
+	padding: 0;
+}
+
+.background {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: #000;
+	z-index: -1;
+}
+
+.background::before {
+	content: "";
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-image: linear-gradient(to bottom, #000000, #0000ff);
+	opacity: 0.5;
+	animation: animate 10s linear infinite;
+}
+
+@keyframes animate {
+	0% {
+		transform: translateY(-50%);
+	}
+	100% {
+		transform: translateY(50%);
+	}
+}
+.input-container {
+	position: relative;
+	margin: 50px auto;
+	width: 300px;
+}
+
+.input-container input {
+	font-size: 18px;
+	padding: 10px 0;
+	width: 100%;
+	border: none;
+	border-bottom: 2px solid #ccc;
+	background-color: transparent;
+}
+
+.input-container input:focus {
+	outline: none;
+}
+
+.input-container .label {
+	position: absolute;
+	top: 0;
+	left: 0;
+	font-size: 18px;
+	color: #999;
+	pointer-events: none;
+	transition: all 0.2s ease;
+}
+
+.input-container input:focus ~ .label,
+.input-container input:valid ~ .label {
+	top: -20px;
+	left: 0;
+	color: #333;
+	font-size: 14px;
+}
+
+.input-container .underline {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+	height: 2px;
+	background-color: #333;
+	transform: scaleX(0);
+	transform-origin: center;
+	transition: all 0.2s ease;
+}
+
+.input-container input:focus ~ .underline,
+.input-container input:valid ~ .underline {
+	transform: scaleX(1);
+}
+
+
+
+.button {
+	padding: 10px;
+	margin: 10px;
+}
+
+.p {
+	margin-top: 20px;
+	color: #fff;
+}
+
+.h{
+	color: #fff;
+}
+
+
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+.containerx {
+	max-width: 500px;
+	margin: 50px auto;
+	background-color: #fff;
+	padding: 20px;
+	border-radius: 10px;
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.\h1 {
+	text-align: center;
+	margin-bottom: 20px;
+}
+
+.formio {
+	display: flex;
+	flex-direction: column;
+}
+
+.\label {
+	font-size: 18px;
+	margin-bottom: 5px;
+}
+
+input[type="text"],
+input[type="email"] {
+	padding: 6px;
+	margin-bottom: 20px;
+	border-radius: 5px;
+	border: none;
+	background-color: #f2f2f2;
+}
+
+.btn {
+	background-color: #4CAF50;
+	color: #fff;
+	padding: 10px;
+	border: none;
+	border-radius: 5px;
+	cursor: pointer;
+	font-size: 18px;
+}
+
+.btn:hover {
+	background-color: #3e8e41;
+}
+    </style>
+</body>
+</html>
+</body>
+</html>
